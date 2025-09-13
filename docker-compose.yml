@@ -1,0 +1,35 @@
+services:
+  wordpress-php:
+    container_name: wp-php-1
+    build: .
+    volumes:
+      - "./Sites:/var/www/html"
+      - "./conf/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini"
+      - "./conf/www.conf:/usr/local/etc/php-fpm.d/www.conf"
+      - "./conf/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
+
+    command: ["php-fpm", "-R", "--nodaemonize"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - XDEBUG_MODE=debug,trace,develop
+
+  wordpress-nginx:
+    image: nginx
+    volumes:
+      - "./vhosts:/etc/nginx/conf.d"
+      - "./Sites:/var/www/html"
+    container_name: wp-nginx
+    ports:
+      - "80:80"
+
+  wordpress-sql:
+    image: mariadb
+    container_name: wp-sql-1
+    volumes:
+      - "./db-data:/var/lib/mysql"
+    environment:
+      - MARIADB_ROOT_PASSWORD=wp-sql
+# php runs as daemon 1:1
+# nginx runs as nginx 101:101
+# amine 1000:1000
