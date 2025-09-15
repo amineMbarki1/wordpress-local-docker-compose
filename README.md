@@ -62,7 +62,7 @@ define('FS_CHMOD_DIR', 0777);
 define('FS_CHMOD_FILE', 0777);
 ```
 
-> **Note:** These settings allow WordPress to write files directly to the filesystem, with full permissions for any user, which is safe in this local development setup but **should not be used in production**.
+> **Note:** These settings allow WordPress to write files directly to the filesystem, with full permissions for any user, which is safe in this local development setup (basically I wanted the host user to have access to the files php might generate) but **should not be used in production**.
 
 ## Requirements
 
