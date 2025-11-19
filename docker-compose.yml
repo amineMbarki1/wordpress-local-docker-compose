@@ -7,7 +7,7 @@ services:
       - "./conf/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini"
       - "./conf/www.conf:/usr/local/etc/php-fpm.d/www.conf"
       - "./conf/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
-
+      - "./php.ini:/usr/local/etc/php/php.ini"
     command: ["php-fpm", "-R", "--nodaemonize"]
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -30,6 +30,13 @@ services:
       - "./db-data:/var/lib/mysql"
     environment:
       - MARIADB_ROOT_PASSWORD=wp-sql
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080" # Web UI
+      - "1025:1025" # SMTP
+
 # php runs as daemon 1:1
 # nginx runs as nginx 101:101
 # amine 1000:1000
