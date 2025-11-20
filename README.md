@@ -88,4 +88,5 @@ Bash (for newsite.sh)
 - ~~Integrate WP-CLI to manage WordPress sites from the command line.~~
 - Create a more streamlined, fully automated WordPress installation process.
 - Configure separate logs for PHP-FPM pools and Nginx for each individual website.
+- Helper scripts for easier access to the containers
 - More docs
