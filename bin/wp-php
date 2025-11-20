@@ -1,3 +1,5 @@
 #!/bin/bash
 
 docker exec -it wp-php-1 bash
+sample wp-cli command
+#root@0efa93cad739:/var/www/html/cyberperformance.local# su -s /bin/bash www-data -c "wp plugin install wpvivid-backuprestore --activate"root@0efa93cad739:/var/www/html/cyberperformance.local# su -s /bin/bash www-data -c "wp plugin install wpvivid-backuprestore --activate"

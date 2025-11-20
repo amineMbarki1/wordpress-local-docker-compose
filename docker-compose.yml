@@ -13,6 +13,7 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       - XDEBUG_MODE=debug,trace,develop
+    # user: "1000:1000"
 
   wordpress-nginx:
     image: nginx

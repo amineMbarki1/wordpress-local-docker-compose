@@ -1,4 +1,9 @@
 FROM php:8.2-fpm
+
+ARG UNAME=runasuser
+ARG UID=1000
+ARG GID=1000 
+
 RUN docker-php-ext-install mysqli 
 RUN apt update -y
 RUN apt install procps -y
@@ -15,5 +20,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
 
+
+RUN usermod --uid 1000 www-data && groupmod --gid 1000 www-data
 WORKDIR /var/www/html
 # curl exif fileinfo hash imagick mbstring openssl pdo_mysql xml zip

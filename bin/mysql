@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec -it wp-sql-1 mariadb -u root -pwp-sql 
